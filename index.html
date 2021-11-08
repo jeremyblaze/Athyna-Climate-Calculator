@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Athyna Climate Calculator</title>
+    <style type="text/css">
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system;
+            padding: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+    </style>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <!-- This is to be embedded into webflow. To get around their 10k char limit, embed the html, css and js separately -->
+    <!-- To handle submission, have a form with id #climatedataform on the page, and two inputs with names climateemail and climatedata -->
+    
+    <!-- START -->
+    
+        <div class="climCalc">
+            <div class="climCalcCol cleft">
+                <div class="memberList">
+                    
+                </div>
+                <div class="addWrap">
+                    <div class="addMember">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 9H16" stroke="#8592E7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 2V16" stroke="#8592E7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Add Country & Team Members
+                    </div>
+                    <div class="addPopup">
+                        <div class="addLabel">Country</div>
+                        <select class="climCountry">
+                            <option>Select...</option>
+                        </select>
+                        
+                        <div style="height: 18px"></div>
+                        <div class="addLabel">Team Members in this Country</div>
+                        <input type="number" class="climInput" placeholder="0" min="0" />
+                        
+                        <div style="height: 18px"></div>
+                        <a class="addConfirm disabled">Add</a>
+                    </div>
+                </div>
+            </div>
+            <div class="climCalcDivider"></div>
+            <div class="climCalcCol">
+                <div class="result">
+                    <div class="resultContent">
+                        <div class="empty">Based on the number of team members and where they lived, we will show the team's total carbon footprint here.</div>
+                        <div class="filled" style="display:none;">
+                            <div>Your team’s carbon footprint is:<br /><span class="climTonnes">-</span> Tonnes of CO² per month</div>
+                            <div class="resultMini">You can offset it with only $<span class="climPrice">-</span> per month, supporting the project: Plant trees in Pánama.</a></div>
+                            <a class="resultConfirm">Support this Project</a>
+                        </div>
+                        <div class="lead" style="display:none;">
+                            Please enter your email address
+                            <div style="height:15px"></div>
+                            <input type="email" class="climInput emailField" placeholder="you@email.com" />
+                            <div style="height:15px"></div>
+                            <a class="emailConfirm disabled">Let's go!</a>
+                            <div style="height:15px"></div>
+                            <a class="emailBack">Back</a>
+                        </div>
+                        <div class="done" style="display:none;">
+                            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24.9775 49.9551C38.7723 49.9551 49.9551 38.7723 49.9551 24.9775C49.9551 11.1828 38.7723 0 24.9775 0C11.1828 0 0 11.1828 0 24.9775C0 38.7723 11.1828 49.9551 24.9775 49.9551Z" fill="#B1D0A5"/>
+                                <path d="M43.3633 8.06934C44.4993 9.30415 45.5127 10.6537 46.3839 12.0987L26.0124 32.4701C24.0617 34.4208 20.8985 34.4208 18.9478 32.4701L11.9718 25.4941C10.9964 24.5187 10.9964 22.9372 11.9718 21.9618C12.9472 20.9864 14.5287 20.9864 15.5042 21.9618L22.4801 28.9378L43.1937 8.22412C43.2485 8.16947 43.3049 8.11787 43.3633 8.06934Z" fill="white"/>
+                            </svg>
+                            <div style="height:20px"></div>
+                            Awesome! Someone from Athyna will be in touch with you within 24 hours to get started.
+                        </div>
+                    </div>
+                    <div class="resultBg">
+                        <svg width="192" height="299" viewBox="0 0 192 299" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.1">
+                        <path d="M83.401 87.1717C68.1745 94.7841 56.5895 108.126 51.1879 124.269C45.7863 140.413 47.0092 158.04 54.5884 173.283L104.428 273.247C107.444 279.303 111.761 284.619 117.071 288.812C122.38 293.005 128.552 295.973 135.142 297.503C141.733 299.032 148.58 299.086 155.194 297.66C161.808 296.234 168.025 293.364 173.4 289.254C178.775 285.145 183.175 279.898 186.286 273.89C189.396 267.881 191.139 261.259 191.391 254.498C191.643 247.737 190.398 241.003 187.743 234.78C185.089 228.556 181.091 222.996 176.037 218.498L154.919 199.69C152.471 197.505 150.594 194.753 149.455 191.676C148.315 188.599 147.946 185.289 148.381 182.036C148.816 178.783 150.041 175.687 151.949 173.017C153.857 170.347 156.39 168.185 159.327 166.72C166.857 162.955 172.586 156.357 175.257 148.373C177.929 140.389 177.324 131.672 173.576 124.133L169.513 115.984C161.9 100.758 148.559 89.1727 132.415 83.7711C116.271 78.3695 98.6441 79.5925 83.401 87.1717Z" fill="url(#paint0_linear_2562:8468)"/>
+                        <path d="M106.945 42.8204C110.399 49.7477 116.463 55.0192 123.804 57.4753C131.144 59.9313 139.16 59.3708 146.087 55.9171C153.014 52.4633 158.286 46.3991 160.742 39.0586C163.198 31.7181 162.638 23.7026 159.184 16.7754C155.73 9.84813 149.666 4.57663 142.325 2.12053C134.985 -0.335561 126.969 0.224939 120.042 3.67873C113.115 7.13252 107.843 13.1967 105.387 20.5372C102.931 27.8777 103.492 35.8932 106.945 42.8204Z" fill="url(#paint1_linear_2562:8468)"/>
+                        <path d="M59.9482 53.2078C60.9742 55.2659 62.3956 57.1016 64.1312 58.6103C65.8667 60.119 67.8824 61.2711 70.0632 62.0007C72.244 62.7304 74.5472 63.0234 76.8412 62.863C79.1352 62.7026 81.3752 62.0919 83.4332 61.0658C85.4912 60.0397 87.327 58.6183 88.8356 56.8828C90.3443 55.1473 91.4964 53.1315 92.2261 50.9508C92.9558 48.77 93.2488 46.4668 93.0883 44.1728C92.9279 41.8788 92.3172 39.6388 91.2912 37.5808C90.2651 35.5228 88.8437 33.687 87.1081 32.1784C85.3726 30.6697 83.3569 29.5176 81.1761 28.7879C78.9953 28.0582 76.6922 27.7652 74.3981 27.9256C72.1041 28.0861 69.8641 28.6967 67.8061 29.7228C65.7481 30.7489 63.9124 32.1703 62.4037 33.9059C60.895 35.6414 59.7429 37.6571 59.0132 39.8379C58.2836 42.0187 57.9906 44.3218 58.151 46.6159C58.3114 48.9099 58.9221 51.1498 59.9482 53.2078Z" fill="url(#paint2_linear_2562:8468)"/>
+                        <path d="M20.7607 79.2687C22.833 83.425 26.4715 86.588 30.8758 88.0616C35.2801 89.5353 40.0894 89.199 44.2458 87.1267C48.4021 85.0544 51.565 81.4159 53.0387 77.0116C54.5123 72.6073 54.176 67.798 52.1037 63.6417C50.0315 59.4853 46.393 56.3224 41.9887 54.8488C37.5844 53.3751 32.7751 53.7114 28.6187 55.7837C24.4624 57.856 21.2995 61.4945 19.8258 65.8988C18.3522 70.3031 18.6885 75.1124 20.7607 79.2687Z" fill="url(#paint3_linear_2562:8468)"/>
+                        <path d="M2.44043 121.015C3.46651 123.073 4.88791 124.909 6.62345 126.417C8.359 127.926 10.3747 129.078 12.5555 129.808C14.7363 130.537 17.0394 130.83 19.3335 130.67C21.6275 130.51 23.8674 129.899 25.9254 128.873C27.9835 127.847 29.8192 126.425 31.3279 124.69C32.8366 122.954 33.9887 120.938 34.7183 118.758C35.448 116.577 35.741 114.274 35.5806 111.98C35.4202 109.686 34.8095 107.446 33.7834 105.388C32.7573 103.33 31.3359 101.494 29.6004 99.9853C27.8649 98.4766 25.8491 97.3245 23.6684 96.5948C21.4876 95.8652 19.1844 95.5722 16.8904 95.7326C14.5964 95.893 12.3564 96.5037 10.2984 97.5298C8.2404 98.5558 6.40464 99.9772 4.89595 101.713C3.38726 103.448 2.23519 105.464 1.50551 107.645C0.775828 109.826 0.48283 112.129 0.643244 114.423C0.803657 116.717 1.41434 118.957 2.44043 121.015Z" fill="url(#paint4_linear_2562:8468)"/>
+                        </g>
+                        <defs>
+                        <linearGradient id="paint0_linear_2562:8468" x1="33.7835" y1="105.388" x2="2.47377" y2="121.089" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#8592E7"/>
+                        <stop offset="1" stop-color="#8AD4C5"/>
+                        </linearGradient>
+                        <linearGradient id="paint1_linear_2562:8468" x1="33.7835" y1="105.388" x2="2.47377" y2="121.089" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#8592E7"/>
+                        <stop offset="1" stop-color="#8AD4C5"/>
+                        </linearGradient>
+                        <linearGradient id="paint2_linear_2562:8468" x1="33.7835" y1="105.388" x2="2.47377" y2="121.089" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#8592E7"/>
+                        <stop offset="1" stop-color="#8AD4C5"/>
+                        </linearGradient>
+                        <linearGradient id="paint3_linear_2562:8468" x1="33.7835" y1="105.388" x2="2.47377" y2="121.089" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#8592E7"/>
+                        <stop offset="1" stop-color="#8AD4C5"/>
+                        </linearGradient>
+                        <linearGradient id="paint4_linear_2562:8468" x1="33.7835" y1="105.388" x2="2.47377" y2="121.089" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#8592E7"/>
+                        <stop offset="1" stop-color="#8AD4C5"/>
+                        </linearGradient>
+                        </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <link rel="stylesheet" type="text/css" href="Dropzie/jquery.dropzie.css" />
+        <script type="text/javascript" src="Dropzie/jquery.dropzie.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        
+        <script type="text/javascript" src="climateData.json"></script>
+        <script type="text/javascript" src="scripts.js"></script>
+        
+    
+    <!-- FINISH -->
+    
+</body>
+</html>

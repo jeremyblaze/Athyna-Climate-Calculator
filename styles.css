@@ -1,0 +1,271 @@
+.climCalc {
+    display: flex;
+    align-items: stretch;
+    min-height: 300px;
+    color: #2E3555;
+}
+
+.climCalcDivider {
+    flex-shrink: 0;
+    display: block;
+    margin: 0 40px;
+    width: 1px;
+    background: #eee;
+}
+
+.climCalcCol {
+    width: 50%;
+    flex-grow: 1;
+}
+
+/* left */
+
+    .climCalcCol.cleft {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: stretch;
+    }
+    
+    @media only screen and (max-width: 900px) {
+        
+        .climCalc {
+            flex-direction: column;
+        }
+        
+        .climCalcDivider {
+            margin: 40px 0;
+            width: 100%;
+            height: 1px;
+        }
+        
+        .climCalcCol:not(.cleft) {
+            width: 100%;
+            min-height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+        }
+        
+        .climCalcCol.cleft {
+            width: 100%;
+        }
+        
+    }
+
+    .addWrap {
+        flex-grow: 1;
+        flex-shrink: 0;
+        position: relative;
+        height: 44px;
+        z-index: 10;
+    }
+
+    .addMember {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        height: 100%;
+        border: 1px solid #eee;
+        border-radius: 10px;
+        color: #8592E7;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 16px;
+        cursor: pointer;
+    }
+    
+        .addMember:hover {
+            background: #fafafa;
+        }
+    
+        .addMember svg {
+            margin-right: 10px;
+        }
+        
+        .addPopup {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            margin-top: 50px;
+            border-radius: 10px;
+            background: white;
+            padding: 30px;
+            box-shadow: 0px 4px 25px 0 rgba(0,0,0,0.06);
+            opacity: 0;
+            transform-origin: 50% 0;
+            transform: scale(0.3);
+            pointer-events: none;
+            transition: 0.1s;
+        }
+        
+            .addPopup.open {
+                opacity: 1;
+                transform: scale(1);
+                pointer-events: all;
+            }
+        
+            .addPopup:after {
+                content: '';
+                display: block;
+                background-image: url('data:image/svg+xml,<svg width="36" height="13" viewBox="0 0 36 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 6.5C14.5615 2.0485 16 0 18 0C20 0 21.4385 2.0485 25 6.5C29 11.5 30 13 36 13H0C6 13 7 11.5 11 6.5Z" fill="white"/></svg>');
+                width: 36px;
+                height: 13px;
+                position: absolute;
+                top: -13px;
+                left: 50%;
+                margin-left: -18px;
+            }
+            
+    .addLabel {
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+    
+    .climInput,
+    .dropzieToggle {
+        width: 100%;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+        outline: none;
+        font: inherit;
+        border-radius: 8px;
+        border: 0;
+        border: 1px solid #eee;
+        padding: 12px 15px;
+        font-weight: normal;
+        box-shadow: none;
+        font-size: 18px;
+        line-height: 18px;
+    }
+    
+    .dropzieOption.hov,
+    .dropzieOption:hover {
+        background: #8592E7;
+    }
+    
+    .addConfirm {
+        display: block;
+        font-size: 15px;
+        background: #2E3555;
+        padding: 12px 30px;
+        width: 100%;
+        box-sizing: border-box;
+        cursor: pointer;
+        color: white;
+        border-radius: 50px;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+        .addConfirm:hover {
+            background: #424969;
+        }
+        
+        .addConfirm.disabled {
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        
+    .member {
+        border-radius: 10px;
+        border: 1px solid #eee;
+        display: flex;
+        padding: 12px 18px;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+        .member strong {
+            font-weight: bold;
+            display: block;
+        }
+    
+        .deleteMember {
+            margin-left: auto;
+            width: 16px;
+            height: 20px;
+            display: block;
+            opacity: 0.5;
+            cursor: pointer;
+        }
+        
+        .deleteMember:hover {
+            opacity: 1;
+        }
+    
+/* right */
+    
+    .result {
+        min-height: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+        .resultBg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+        
+        .resultContent {
+            position: relative;
+            z-index: 2;
+            max-width: 360px;
+            margin: 0 auto;
+            text-align: center;
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 32px;
+        }
+        
+        .resultMini {
+            opacity: 0.8;
+            font-size: 17px;
+            line-height: 28px;
+            font-weight: normal;
+            margin: 20px 0;
+        }
+        
+        .resultConfirm,
+        .emailConfirm {
+            display: inline-block;
+            font-size: 15px;
+            background: #8592E7;
+            padding: 4px 25px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            cursor: pointer;
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+            .resultConfirm:hover,
+            .emailConfirm:hover {
+                background: #99A6FB;
+            }
+            
+            .emailConfirm.disabled {
+                opacity: 0.2;
+                pointer-events: none;
+            }
+            
+        .emailBack {
+            font-weight: bold;
+            text-decoration: underline;
+            font-size: 15px;
+            cursor: pointer;
+        }
