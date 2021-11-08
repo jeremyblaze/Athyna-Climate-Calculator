@@ -93,7 +93,7 @@
           return regex.test(email);
         }
         
-        $jq('.emailField').keypress(function(){
+        $jq('.emailField').on('change', function(){
             if ( isEmail($jq(this).val()) ) {
                 $jq('.emailConfirm').removeClass('disabled');
                 $jq('input[name="climateemail"]').val($jq(this).val());
@@ -110,7 +110,7 @@
         $jq('.emailConfirm').click(function(){
             $jq('.resultContent .lead').hide();
             $jq('.resultContent .done').show();
-            $jq('#climatedataform').submit();
+            $jq('#climatedataform input[type="submit"]').click();
         });
         
         // add country/people
