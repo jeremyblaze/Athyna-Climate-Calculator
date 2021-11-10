@@ -16,6 +16,8 @@
                 $jq('.resultContent .filled').hide();
             }
             
+            calcResult();
+            
         });
         
     }
@@ -53,7 +55,7 @@
         
         // display
         
-            $jq('.climTonnes').html(totalEmissions);
+            $jq('.climTonnes').html(totalEmissions.toFixed(2));
             $jq('.climPrice').html(totalPrice.toFixed(2));
         
             $jq('.resultContent .empty').hide();
