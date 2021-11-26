@@ -124,6 +124,12 @@
         font-size: 15px;
         margin-bottom: 10px;
     }
+
+    .dropzieMenu {
+    	max-height: 300px !important;
+    	overflow: auto;
+    	-webkit-overflow-scrolling: touch;
+    }
     
     .climInput,
     .dropzieToggle {
